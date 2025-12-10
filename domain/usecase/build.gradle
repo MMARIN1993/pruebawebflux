@@ -1,0 +1,6 @@
+dependencies {
+    implementation project(':domain:model')
+    implementation project(':infrastructure:driver-adapters')
+    implementation 'org.slf4j:slf4j-api:2.0.16'
+    testImplementation 'org.slf4j:slf4j-simple:2.0.16'
+}

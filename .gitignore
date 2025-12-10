@@ -1,0 +1,49 @@
+# Java & Gradle
+*.class
+*.jar
+*.war
+*.ear
+
+# Build outputs
+/build/
+**/build/
+!/gradle/wrapper/
+/.gradle/
+**/.gradle/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
+logs/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Git
+.gitignore
+
+# Node (si existe frontend separado)
+node_modules/
+
+# Docker
+Dockerfile~
+.dockerignore~
+
+# Test reports
+**/reports/
+**/test-results/
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+

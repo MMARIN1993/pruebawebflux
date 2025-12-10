@@ -1,0 +1,66 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.surabancaweb'
+version = '0.0.1-SNAPSHOT'
+
+subprojects {
+    apply plugin: 'java-library'
+
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(17)
+        }
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    ext {
+        lombokVersion = '1.18.32'
+    }
+
+    dependencies {
+        // Lombok para todos los módulos
+        compileOnly "org.projectlombok:lombok:${lombokVersion}"
+        annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+
+        testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
+        // Mockito para pruebas unitarias
+        testImplementation 'org.mockito:mockito-core:5.11.0'
+        testImplementation 'org.mockito:mockito-junit-jupiter:5.11.0'
+        // Reactor Test para StepVerifier
+        testImplementation 'io.projectreactor:reactor-test:3.5.11'
+    }
+
+    tasks.withType(Test).configureEach {
+        useJUnitPlatform()
+    }
+
+    tasks.withType(JavaCompile).configureEach {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+        options.encoding = 'UTF-8'
+    }
+}
+
+project(':domain:model') {
+    dependencies {
+        // Tipos reactivos necesarios para Flux/Mono en el dominio
+        api 'io.projectreactor:reactor-core:3.5.11'
+    }
+}
+
+project(':infrastructure:driver-adapters:r2dbc-repository') {
+    dependencies {
+        // ReactiveCrudRepository y utilidades de Spring Data
+        implementation 'org.springframework.data:spring-data-commons:3.3.5'
+        // Reactor para tipos reactivos en este módulo
+        implementation 'io.projectreactor:reactor-core:3.5.11'
+    }
+}
+
+// Nota: No declarar versiones de 'org.springframework.boot' ni 'io.spring.dependency-management' en submódulos.
+// Las versiones se controlan desde settings.gradle mediante pluginManagement.
