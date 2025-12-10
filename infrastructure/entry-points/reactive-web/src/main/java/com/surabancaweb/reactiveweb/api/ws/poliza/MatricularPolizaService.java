@@ -45,10 +45,10 @@ public class MatricularPolizaService {
                         new ResponseDTO<>(200, "Poliza guardada exitosamente",
                                 polizaMapperService.domainToDTO(domain), 1)
                 ))
-                .onErrorResume(ex -> {
-                    return Mono.just(ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                            .body(new ResponseDTO<>(400, "Error al guardar la Poliza: " + ex.getMessage(), null, 0)));
-                });
+                .onErrorResume(ex ->
+                     Mono.just(ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                            .body(new ResponseDTO<>(400, "Error al guardar la Poliza: " + ex.getMessage(), null, 0)))
+                );
     }
 
 

@@ -49,7 +49,6 @@ public class ObtenerPolizaService {
                                 polizaMapperService.domainToDTO(domain), 1)
                 ))
                 .onErrorResume(ex -> Mono.just(ResponseEntity.status(HttpStatus.BAD_REQUEST)
-
                   .body(new ResponseDTO<>(400, "Error al consultar la Poliza: " + ex.getMessage(), null, 0))));
     }
 
