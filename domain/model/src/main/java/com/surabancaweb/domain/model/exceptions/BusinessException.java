@@ -7,7 +7,7 @@ public class BusinessException extends RuntimeException {
         FECHA_MAYOR("La fecha de inicio debe ser mayor o igual a la fecha actual"),
         VALOR_MAYOR("El valor debe ser mayor a 0"),
         VALIDATION("Error de validación"),        // Negocio específicos
-        POLIZA_NO_EXISTE_POLICYID("La Poliza con policyId proporcionado no existe"),
+        POLIZA_NO_EXISTE_POLICYID("La Poliza con polizaId proporcionado no existe"),
         POLIZAS_NO_REGISTRADAS("No existen polizas registradas"),
         // Negocio generales
         NOT_FOUND("Recurso no encontrado"),
